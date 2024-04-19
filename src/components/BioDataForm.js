@@ -5,12 +5,12 @@ import "../App.css";
 
 const BioDataForm = () => {
   const [formData, setFormData] = useState({
-    name: "Glo",
-    age: "25",
-    gender: "female",
-    height: "1.69",
-    weight: "51",
-    activityLevel: "Sedentary",
+    name: "",
+    age: "",
+    gender: "",
+    height: "",
+    weight: "",
+    activityLevel: "",
   });
   const [response, setResponse] = useState(null);
 
