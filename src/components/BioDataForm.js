@@ -127,8 +127,8 @@ const BioDataForm = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="row p-4 rounded">
-              <h5 className="font">DIET WIZARD</h5>
-              <h4 className=" mb-4 font">Analysis Form</h4>
+              <h3 className="font">DIET WIZARD</h3>
+              <h5 className=" mb-4 font">Analysis Form</h5>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label"></label>
                 <input
