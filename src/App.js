@@ -9,14 +9,14 @@ function App() {
     setShowForm(true);
   };
   return (
-    <div className="min-vh-100 ">
+    <div className="min-vh-100">
       <div className="landing-page">
         {/* <div className="background-image"></div> */}
         <div className="container content">
           {!showForm ? (
             <div>
               <div className="text-section">
-                <h1 className="font mb-5">DIET WIZARD</h1>
+                <h1 className="font-title mb-5">DIET WIZARD</h1>
                 <img
                   src={dietImg}
                   alt="diet"
