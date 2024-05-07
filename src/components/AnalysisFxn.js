@@ -36,16 +36,16 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
 
   if (bmi < 18.5) {
     category = "Underweight";
-    caloriesQty = bmr + 500;
+    caloriesQty = (bmr + 500).toFixed(1);
   } else if (bmi >= 18.5 && bmi <= 24.9) {
     category = "Normal";
     caloriesQty = bmr;
   } else if (bmi >= 25 && bmi <= 29.9) {
     category = "OverWeight";
-    caloriesQty = bmr - 500;
+    caloriesQty = (bmr - 500).toFixed(1);
   } else if (bmi >= 30) {
     category = "Obese";
-    caloriesQty = bmr - 500;
+    caloriesQty = (bmr - 500).toFixed(1);
   }
 
   const foodGroups = [
