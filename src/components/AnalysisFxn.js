@@ -36,16 +36,16 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
 
   if (bmi < 18.5) {
     category = "Underweight";
-    caloriesQty = (bmr + 500).toFixed(1);
+    caloriesQty = bmr + 500;
   } else if (bmi >= 18.5 && bmi <= 24.9) {
     category = "Normal";
     caloriesQty = bmr;
   } else if (bmi >= 25 && bmi <= 29.9) {
     category = "OverWeight";
-    caloriesQty = (bmr - 500).toFixed(1);
+    caloriesQty = bmr - 500;
   } else if (bmi >= 30) {
     category = "Obese";
-    caloriesQty = (bmr - 500).toFixed(1);
+    caloriesQty = bmr - 500;
   }
 
   const foodGroups = [
@@ -121,6 +121,10 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
 
   for (const group of foodGroups) {
     let groupCalories = 0;
+    const shuffledRecommendations = group.foodRecommendations.sort(
+      () => 0.5 - Math.random()
+    );
+    const selectedFoods = shuffledRecommendations.slice(0, 3).join(", \n");
     while (groupCalories < remainingCalories) {
       const randomPortion =
         group.portions[getRandomInt(0, group.portions.length - 1)];
@@ -134,10 +138,10 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
       }
     }
 
-    const randomRecommendation = group.foodRecommendations
-      .slice(0, group.foodRecommendations.length)
-      .join(", \n");
-    selectedRecommendations[group.name] = randomRecommendation;
+    // const randomRecommendation = group.foodRecommendations
+    //   .slice(0, group.foodRecommendations.length)
+    //   .join(", \n");
+    selectedRecommendations[group.name] = selectedFoods;
   }
 
   const result = {

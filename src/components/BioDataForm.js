@@ -117,13 +117,22 @@ const BioDataForm = () => {
                 </tbody>
               </table>
               {/* Display other properties as needed */}
-              <button
-                className="btn d-block text-white mt-2"
-                style={{ backgroundColor: "#880808" }}
-                onClick={clearForm}
-              >
-                Clear
-              </button>
+              <div className="row">
+                <button
+                  className="btn text-white mt-2"
+                  style={{ backgroundColor: "#880808" }}
+                  onClick={clearForm}
+                >
+                  Clear
+                </button>
+                <button
+                  className="btn text-white mt-2"
+                  style={{ backgroundColor: "#000000" }}
+                  onClick={handleSubmit}
+                >
+                  Regenerate
+                </button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="row p-4 rounded">
