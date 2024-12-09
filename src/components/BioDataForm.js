@@ -49,7 +49,7 @@ const BioDataForm = () => {
   };
 
   return (
-    <div className="container padded font">
+    <div style={{ minWidth: "1000px" }} className="container padded font">
       <div className="card border rounded shadow">
         <div className="card-body">
           {response ? (
@@ -86,58 +86,73 @@ const BioDataForm = () => {
               <h4>
                 <strong>RESULTS: </strong>
               </h4>
-              <table className="table-responsive table-bordered">
-                <thead>
-                  <tr>
-                    <th>Food Group</th>
-                    <th>Portion</th>
-                    <th>Total Calories</th>
-                    <th>Food Recommendations</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.keys(response.foodPortions).map(
-                    (groupName, index) => (
-                      <tr key={index}>
-                        <td>{groupName}</td>
-                        <td>{response.foodPortions[groupName].portion}</td>
-                        <td>{response.foodPortions[groupName].calories}</td>
-                        <td>{response.selectedRecommendations[groupName]}</td>
-                      </tr>
-                    )
-                  )}
-                  <tr>
-                    <td colSpan="2">
-                      <strong>Total Calories</strong>
-                    </td>
-                    <td>
-                      <strong>{response.caloriesQty}</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div>
+                <table
+                  style={{ minWidth: "800px" }}
+                  className="table-responsive table-bordered"
+                >
+                  <thead>
+                    <tr>
+                      <th>Food Group</th>
+                      <th>Portion</th>
+                      <th>Total Calories</th>
+                      <th>Food Recommendations</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.keys(response.foodPortions).map(
+                      (groupName, index) => (
+                        <tr key={index}>
+                          <td>{groupName}</td>
+                          <td>{response.foodPortions[groupName].portion}</td>
+                          <td>{response.foodPortions[groupName].calories}</td>
+                          <td>{response.selectedRecommendations[groupName]}</td>
+                          <td>000</td>
+                        </tr>
+                      )
+                    )}
+                    <tr>
+                      <td colSpan="2">
+                        <strong>Total Calories</strong>
+                      </td>
+                      <td>
+                        <strong>{response.caloriesQty}</strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
               {/* Display other properties as needed */}
               <div className="row">
-                <button
-                  className="btn text-white mt-2"
-                  style={{ backgroundColor: "#880808" }}
-                  onClick={clearForm}
-                >
-                  Clear
-                </button>
-                <button
-                  className="btn text-white mt-2"
-                  style={{ backgroundColor: "#000000" }}
-                  onClick={handleSubmit}
-                >
-                  Regenerate
-                </button>
+                <div className="column">
+                  <button
+                    className="btn text-white mt-2"
+                    style={{ backgroundColor: "#880808", minWidth: "100px" }}
+                    onClick={clearForm}
+                  >
+                    Clear
+                  </button>
+                </div>
+                <div className="column">
+                  <button
+                    className="btn text-white mt-2"
+                    style={{ backgroundColor: "#000000", minWidth: "100px" }}
+                    onClick={handleSubmit}
+                  >
+                    Regenerate
+                  </button>
+                </div>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="row p-4 rounded">
               <h3 className="font">DIET WIZARD</h3>
-              <h5 className=" mb-4 font">Analysis Form</h5>
+              {/* <h5 className=" mb-4 font">Analysis Form</h5> */}
+              <h5>To get started please fill in the analysis form below: </h5>
+              <h5>(Once done, click on sumbit to generate your bio data) </h5>
+
               <div className="mb-3">
                 <label htmlFor="name" className="form-label"></label>
                 <input
@@ -179,6 +194,9 @@ const BioDataForm = () => {
                 </select>
               </div>
               <div className="mb-3">
+                <label htmlFor="name" className="form-label">
+                  Enter your height in meters
+                </label>
                 <input
                   type="number"
                   className="form-control"
@@ -191,6 +209,9 @@ const BioDataForm = () => {
                 />
               </div>
               <div className="mb-3">
+                <label htmlFor="name" className="form-label">
+                  Enter your weight in KGs
+                </label>
                 <input
                   type="number"
                   className="form-control"
@@ -204,6 +225,10 @@ const BioDataForm = () => {
               </div>
 
               <div className="mb-3">
+                <label htmlFor="name" className="form-label">
+                  Select your activity level based on how active you are on a
+                  daily basis
+                </label>
                 <select
                   className="form-select"
                   id="activityLevel"

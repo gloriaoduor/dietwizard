@@ -26,15 +26,11 @@ function App() {
                   <h5
                     style={{ textAlign: "center", textJustify: "inter-word" }}
                   >
-                    {/* Simplifies healthy eating by providing personalized guidance
-                    based
-                    <br />
-                    on your unique needs, ensuring a balanced diet tailored to
-                    your goals.
-                    <br /> */}
                     Whether you want to maintain, gain, or lose weight, this app
                     helps you <br />
                     make informed choices for a healthier lifestyle.
+                    <br />
+                    Click here to get started
                   </h5>
                 </p>
                 <button
