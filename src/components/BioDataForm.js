@@ -101,9 +101,7 @@ const BioDataForm = () => {
                         <TableCell>Food Group</TableCell>
                         <TableCell align="right">Portion</TableCell>
                         <TableCell align="right">Total Calories</TableCell>
-                        <TableCell align="right">
-                          Food Recommendations
-                        </TableCell>
+                        <TableCell align="left">Food Recommendations</TableCell>
                         <TableCell align="right"></TableCell>
                       </TableRow>
                     </TableHead>
@@ -118,13 +116,21 @@ const BioDataForm = () => {
                             <TableCell align="right">
                               {response.foodPortions[groupName].calories}
                             </TableCell>
-                            <TableCell align="right">
+                            <TableCell align="left">
                               {response.selectedRecommendations[groupName]}
                             </TableCell>
                             <TableCell align="right"></TableCell>
                           </TableRow>
                         )
                       )}
+                      <TableRow>
+                        <TableCell component="th" colSpan={2}>
+                          Total Calories
+                        </TableCell>
+                        <TableCell component="th" align="right">
+                          {response.caloriesQty}
+                        </TableCell>
+                      </TableRow>
                     </TableBody>
                   </Table>
                 </TableContainer>

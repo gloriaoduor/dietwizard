@@ -1,4 +1,5 @@
 export const calculateBmr = (sex, weight, height, age, activityLevel) => {
+  console.log("DAta", sex, weight, height, age, activityLevel);
   const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
@@ -31,8 +32,8 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
       break;
   }
 
-  bmi = (weight / (height * height)).toFixed(1);
-  bmr = bmr.toFixed(1);
+  bmi = (weight / (height * height)).toFixed(2);
+  bmr = bmr.toFixed(2);
 
   if (bmi < 18.5) {
     category = "Underweight";
@@ -47,6 +48,7 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
     category = "Obese";
     caloriesQty = activityLvl - 500;
   }
+  caloriesQty = caloriesQty.toFixed(2);
 
   const foodGroups = [
     {

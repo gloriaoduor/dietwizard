@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import BioDataForm from "./components/BioDataForm";
 import dietImg from "./assets/diet3.svg";
+import Test from "./components/Test";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -43,7 +44,7 @@ function App() {
               </div>
             </div>
           ) : (
-            <BioDataForm /> // Your analysis form component
+            <Test /> // Your analysis form component
           )}
         </div>
       </div>
