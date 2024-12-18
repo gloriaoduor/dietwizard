@@ -15,19 +15,19 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
       activityLvl = bmr * 1.2;
       break;
     case "Light":
-      activityLvl *= 1.375;
+      activityLvl = bmr * 1.375;
       break;
     case "Moderate":
-      activityLvl *= 1.55;
+      activityLvl = bmr * 1.55;
       break;
     case "Very":
-      activityLvl *= 1.725;
+      activityLvl = bmr * 1.725;
       break;
     case "Super":
-      activityLvl *= 1.9;
+      activityLvl = bmr * 1.9;
       break;
     default:
-      activityLvl *= 1.2;
+      activityLvl = bmr * 1.2;
       break;
   }
 
