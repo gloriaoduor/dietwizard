@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { calculateBmr } from "./AnalysisFxn";
 import "../App.css";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 const BioDataForm = () => {
   const [formData, setFormData] = useState({
@@ -87,41 +94,40 @@ const BioDataForm = () => {
                 <strong>RESULTS: </strong>
               </h4>
               <div>
-                <table
-                  style={{ minWidth: "800px" }}
-                  className="table-responsive table-bordered"
-                >
-                  <thead>
-                    <tr>
-                      <th>Food Group</th>
-                      <th>Portion</th>
-                      <th>Total Calories</th>
-                      <th>Food Recommendations</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Object.keys(response.foodPortions).map(
-                      (groupName, index) => (
-                        <tr key={index}>
-                          <td>{groupName}</td>
-                          <td>{response.foodPortions[groupName].portion}</td>
-                          <td>{response.foodPortions[groupName].calories}</td>
-                          <td>{response.selectedRecommendations[groupName]}</td>
-                          <td>000</td>
-                        </tr>
-                      )
-                    )}
-                    <tr>
-                      <td colSpan="2">
-                        <strong>Total Calories</strong>
-                      </td>
-                      <td>
-                        <strong>{response.caloriesQty}</strong>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Food Group</TableCell>
+                        <TableCell align="right">Portion</TableCell>
+                        <TableCell align="right">Total Calories</TableCell>
+                        <TableCell align="right">
+                          Food Recommendations
+                        </TableCell>
+                        <TableCell align="right"></TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {Object.keys(response.foodPortions).map(
+                        (groupName, index) => (
+                          <TableRow key={index}>
+                            <TableCell component="th">{groupName}</TableCell>
+                            <TableCell align="right">
+                              {response.foodPortions[groupName].portion}
+                            </TableCell>
+                            <TableCell align="right">
+                              {response.foodPortions[groupName].calories}
+                            </TableCell>
+                            <TableCell align="right">
+                              {response.selectedRecommendations[groupName]}
+                            </TableCell>
+                            <TableCell align="right"></TableCell>
+                          </TableRow>
+                        )
+                      )}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
               </div>
 
               {/* Display other properties as needed */}
@@ -148,10 +154,29 @@ const BioDataForm = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="row p-4 rounded">
-              <h3 className="font">DIET WIZARD</h3>
-              {/* <h5 className=" mb-4 font">Analysis Form</h5> */}
-              <h5>To get started please fill in the analysis form below: </h5>
-              <h5>(Once done, click on sumbit to generate your bio data) </h5>
+              <h1 className="font">DIET WIZARD</h1>
+
+              <h5>INSTRUCTIONS:</h5>
+              <p>
+                <ol>
+                  <li>
+                    Fill in the analysis form. Remember to enter your weight in
+                    KGs and your height in meters by multiplying your height by
+                    100 and selecting your age and activity level based on how
+                    active you are
+                  </li>
+                  <li> Click on Generate to get the Bio Data</li>
+                  <li>
+                    Generate the results (food groups, portion size, total
+                    calories and food recommendations as per the food groups and
+                    portion size per serving )
+                  </li>
+                  <li>
+                    Press the Regenerate button if you need the application to
+                    give you more food suggestions{" "}
+                  </li>
+                </ol>
+              </p>
 
               <div className="mb-3">
                 <label htmlFor="name" className="form-label"></label>

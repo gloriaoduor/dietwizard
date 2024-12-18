@@ -3,7 +3,7 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  let bmr, bmi, category, caloriesQty;
+  let bmr, bmi, category, caloriesQty, activityLvl;
 
   if (sex === "male") {
     bmr = 10 * weight + 6.25 * (height * 100) - 5 * age + 5;
@@ -12,22 +12,22 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
   }
   switch (activityLevel) {
     case "Sedentary":
-      bmr = bmr * 1.2;
+      activityLvl = bmr * 1.2;
       break;
     case "Light":
-      bmr *= 1.375;
+      activityLvl *= 1.375;
       break;
     case "Moderate":
-      bmr *= 1.55;
+      activityLvl *= 1.55;
       break;
     case "Very":
-      bmr *= 1.725;
+      activityLvl *= 1.725;
       break;
     case "Super":
-      bmr *= 1.9;
+      activityLvl *= 1.9;
       break;
     default:
-      bmr *= 1.2;
+      activityLvl *= 1.2;
       break;
   }
 
@@ -36,16 +36,16 @@ export const calculateBmr = (sex, weight, height, age, activityLevel) => {
 
   if (bmi < 18.5) {
     category = "Underweight";
-    caloriesQty = bmr + 500;
+    caloriesQty = activityLvl + 500;
   } else if (bmi >= 18.5 && bmi <= 24.9) {
     category = "Normal";
-    caloriesQty = bmr;
+    caloriesQty = activityLvl;
   } else if (bmi >= 25 && bmi <= 29.9) {
     category = "OverWeight";
-    caloriesQty = bmr - 500;
+    caloriesQty = activityLvl - 500;
   } else if (bmi >= 30) {
     category = "Obese";
-    caloriesQty = bmr - 500;
+    caloriesQty = activityLvl - 500;
   }
 
   const foodGroups = [
